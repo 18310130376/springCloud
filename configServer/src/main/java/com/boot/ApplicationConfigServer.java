@@ -12,7 +12,7 @@ public class ApplicationConfigServer {
 	
 	public static void main(String[] args) {
           SpringApplication.run(ApplicationConfigServer.class, args);
-          System.out.println("=====config server statrt successful=========");
+          System.out.println("=====configServer statrt successful=========");
       }
 }
 

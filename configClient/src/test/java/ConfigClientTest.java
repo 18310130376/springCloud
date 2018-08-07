@@ -1,4 +1,4 @@
-import org.configClient.ApplicationConfigClient;
+import org.config.ApplicationConfigClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

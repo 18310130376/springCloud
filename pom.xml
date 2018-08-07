@@ -30,6 +30,7 @@
     <module>configServer</module>
     <module>configClient</module>
     <module>eurekaServer</module>
+    <module>service-zuul</module>
   </modules>
   
   
