@@ -1,5 +1,8 @@
 package org.config.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +18,10 @@ public class ConfigController {
 	 UserService userService;
 	
 	@RequestMapping(value = "/consumer01/{name}",method = RequestMethod.GET)
-	public String getClientInfo01(HttpServletRequest request,@PathVariable("name") String name){
-	  return userService.getClientInfo03(name);
+	public Map<String,Object> getClientInfo01(HttpServletRequest request,@PathVariable("name") String name){
+	  request.getHeaderNames();
+	  Map<String,Object> result = new HashMap<>();
+	  result.put("result", userService.getClientInfo03(name));
+	  return result;
 	}
 }

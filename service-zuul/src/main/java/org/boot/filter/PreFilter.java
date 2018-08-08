@@ -10,7 +10,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 
 @Component
-public class AccessFilter extends ZuulFilter {
+public class PreFilter extends ZuulFilter {
 
 	@Override
 	public boolean shouldFilter() {
@@ -18,7 +18,7 @@ public class AccessFilter extends ZuulFilter {
 	}
 
 	@Override
-	public Object run() {// 过滤器的具体逻辑。可用很复杂，包括查sql，nosql去判断该请求到底有没有权限访问。
+	public Object run() {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 		Object accessToken = request.getParameter("accessToken");
@@ -32,16 +32,18 @@ public class AccessFilter extends ZuulFilter {
 			}
 			return null;
 		}
+		System.out.println(request.getHeaderNames());
 		return null;
 	}
 
 	@Override
 	public String filterType() {
-		return "pre";// 路由之前 routing：路由之时 post： 路由之后 error：发送错误调用
+		return "pre";
 	}
 
 	@Override
 	public int filterOrder() {
 		return 0;
 	}
+
 }

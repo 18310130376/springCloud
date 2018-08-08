@@ -19,4 +19,7 @@ public class FooConfiguration {
 	        //设置日志
 	  return Logger.Level.FULL;
     }
+	 
+	 
+	
 }

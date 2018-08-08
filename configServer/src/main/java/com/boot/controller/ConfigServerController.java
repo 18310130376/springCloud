@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +32,7 @@ public class ConfigServerController {
 	@RequestMapping(value = "/provider/{name}", method = RequestMethod.GET)
 	public String provider02(HttpServletRequest request,@PathVariable("name") String name) {
 		System.out.println("====name:"+name);
+		 request.getHeaderNames();
 		return "hello spring provider02";
 	}
 	
