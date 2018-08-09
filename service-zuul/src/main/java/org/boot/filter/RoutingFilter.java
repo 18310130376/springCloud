@@ -12,6 +12,8 @@ public class RoutingFilter extends ZuulFilter {
 
 	@Override
 	public boolean shouldFilter() {
+		final String serviceId = (String) RequestContext.getCurrentContext().get("proxy");
+		System.out.println(serviceId);
 		return true;
 	}
 

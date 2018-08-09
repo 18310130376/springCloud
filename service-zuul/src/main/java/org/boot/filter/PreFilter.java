@@ -20,6 +20,7 @@ public class PreFilter extends ZuulFilter {
 	@Override
 	public Object run() {
 		RequestContext ctx = RequestContext.getCurrentContext();
+		ctx.set("isOK",true);//可以把一些值放到ctx中，便于后面的filter获取使用
 		HttpServletRequest request = ctx.getRequest();
 		Object accessToken = request.getParameter("accessToken");
 		if (accessToken == null) {
@@ -27,6 +28,7 @@ public class PreFilter extends ZuulFilter {
 			ctx.setResponseStatusCode(401);
 			 try {
 				ctx.getResponse().getWriter().write("token is empty");
+				ctx.set("isOK",false);//可以把一些值放到ctx中，便于后面的filter获取使用
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -43,7 +45,7 @@ public class PreFilter extends ZuulFilter {
 
 	@Override
 	public int filterOrder() {
-		return 0;
+		return 1;
 	}
 
 }
