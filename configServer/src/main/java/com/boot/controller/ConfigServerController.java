@@ -31,9 +31,7 @@ public class ConfigServerController {
 	
 	@RequestMapping(value = "/provider/{name}", method = RequestMethod.GET)
 	public String provider02(HttpServletRequest request,@PathVariable("name") String name) {
-		System.out.println("====name:"+name);
-		 request.getHeaderNames();
-		return "hello spring provider02";
+		return request.getSession().getId();
 	}
 	
 	@RequestMapping(value = "/provider", method = RequestMethod.POST)

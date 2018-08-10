@@ -17,11 +17,11 @@ public class UrlPathFilter extends ZuulFilter{
 
 	@Override
 	public Object run() {
-		
-		  RequestContext context = RequestContext.getCurrentContext();
-		  Object originalRequestPath = context.get("requestURI");
-		  String modifiedRequestPath = "/api/prefix" + originalRequestPath;
-		  context.put("requestURI", modifiedRequestPath);
+//		
+//		  RequestContext context = RequestContext.getCurrentContext();
+//		  Object originalRequestPath = context.get("requestURI");
+//		  String modifiedRequestPath = "/api/prefix" + originalRequestPath;
+//		  context.put("requestURI", modifiedRequestPath);
 		  return null;
 	}
 

@@ -3,7 +3,10 @@ package org.config;
 import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import feign.RequestInterceptor;
@@ -11,7 +14,7 @@ import feign.RequestTemplate;
 
 @Configuration
 public class FeignConfig implements RequestInterceptor {
-
+	
 	@Override
 	public void apply(RequestTemplate requestTemplate) {
 		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
@@ -36,9 +39,5 @@ public class FeignConfig implements RequestInterceptor {
 				body.append(name).append("=").append(values).append("&");
 			}
 		}
-//		if (body.length() != 0) {
-//			body.deleteCharAt(body.length() - 1);
-//			requestTemplate.body(body.toString());
-//		}
 	}
 }

@@ -8,18 +8,15 @@ import feign.Logger;
 
 @Configuration
 public class FooConfiguration {
-	
-	@Bean
-    public Contract feignContract() {
-        return new feign.Contract.Default();
-    }
 
-	 @Bean
-	 Logger.Level feignLoggerLevel() {
-	        //设置日志
-	  return Logger.Level.FULL;
-    }
-	 
-	 
-	
+	@Bean
+	public Contract feignContract() {
+		return new feign.Contract.Default();
+	}
+
+	@Bean
+	Logger.Level feignLoggerLevel() {
+		// 设置日志
+		return Logger.Level.FULL;
+	}
 }
