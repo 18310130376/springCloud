@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -63,6 +64,12 @@ public class JwtTokenUtil implements Serializable {
 		Claims claims;
 		try {
 			claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+			
+			Jws<Claims> parseClaimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+//			 String signature = parseClaimsJws.getSignature();
+//		     Map<String, String> header = parseClaimsJws.getHeader();
+//		     Claims Claims = parseClaimsJws.getBody();
+			claims = parseClaimsJws.getBody();
 		} catch (Exception e) {
 			claims = null;
 		}
@@ -90,7 +97,7 @@ public class JwtTokenUtil implements Serializable {
 	}
 
 	String generateToken(Map<String, Object> claims) {
-		return Jwts.builder().setClaims(claims).setExpiration(generateExpirationDate())
+		return Jwts.builder().setClaims(claims).setExpiration(generateExpirationDate()).setIssuedAt(new Date())
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 

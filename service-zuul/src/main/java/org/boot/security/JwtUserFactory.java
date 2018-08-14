@@ -1,7 +1,7 @@
 package org.boot.security;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -17,6 +17,14 @@ public class JwtUserFactory {
 	}
 
 	private static List<GrantedAuthority> mapToGrantedAuthorities(List<String> authorities) {
-		return authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+//		return authorities.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
+		
+		List<GrantedAuthority> list = new ArrayList<>();
+		if(authorities != null && authorities.size() >0) {
+			for(String role : authorities) {
+				list.add(new SimpleGrantedAuthority("ROLE_"+role));
+			}
+		}
+		return list;
 	}
 }
