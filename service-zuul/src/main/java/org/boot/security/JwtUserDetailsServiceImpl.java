@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtUserDetailsServiceImpl implements UserDetailsService{
 
-	
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = UserDB.findByUsername(username);
@@ -19,5 +17,4 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService{
             return JwtUserFactory.create(user);
         }
     }
-
 }
