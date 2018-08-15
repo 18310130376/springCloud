@@ -1,5 +1,7 @@
 package org.service.zuul;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -34,5 +36,6 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
+        
     }
 }
